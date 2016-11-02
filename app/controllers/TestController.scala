@@ -17,7 +17,7 @@ class TestController @Inject()(testService: TestService) extends Controller {
   def saveTest = Action {
     var test = Test(UUID.randomUUID.toString, "Matias", "Lopez")
     testService.save(test)
-    Ok(views.html.index("Your new application is ready."))
+    Ok(views.html.index("Your new application is ready!"))
   }
 
 }
