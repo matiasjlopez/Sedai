@@ -11,7 +11,7 @@ import services.Mongo
 
 import scala.concurrent.Future
 
-@ImplementedBy(classOf[MongoBowlDAO])
+@ImplementedBy(classOf[MongoIngredientDAO])
 trait IngredientDAO {
   def all(): Future[Seq[Ingredient]]
 
