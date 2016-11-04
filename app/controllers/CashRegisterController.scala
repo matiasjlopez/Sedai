@@ -14,7 +14,6 @@ import scala.concurrent.duration.Duration
 class CashRegisterController @Inject()(orderService: OrderService, purchaseService: PurchaseService) extends Controller{
 
   def showCashRegister = Action {
-
     //Get all Purchases from DB.
     var purchases = Seq[Purchase]()
     val purchasesFromDB: Future[Seq[Purchase]] = purchaseService.all()

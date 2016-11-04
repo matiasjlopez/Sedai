@@ -8,5 +8,8 @@ GET     /                           controllers.HomeController.index
 # Bowl Controller
 GET     /bowl/add                   controllers.BowlController.saveBowl
 
+#Order Controller
+GET     /order/add                  controllers.OrderController.saveOrder
+
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
