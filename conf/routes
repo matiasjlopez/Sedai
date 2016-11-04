@@ -5,5 +5,8 @@
 # Home Controller
 GET     /                           controllers.HomeController.index
 
+# Bowl Controller
+GET     /bowl/add                   controllers.BowlController.saveBowl
+
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
