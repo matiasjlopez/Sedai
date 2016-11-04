@@ -68,10 +68,13 @@ class MongoBowlDAO @Inject()(mongo: Mongo) extends BowlDAO {
       }
     }
 
+    var bsonPrice: BsonValue = doc.get("price").get
+    val price: Double = if(bsonPrice.toString contains "Double") bsonPrice.asDouble().getValue else bsonPrice.asInt32().doubleValue()
+
     Bowl(
       doc.get("_id").get.asString().getValue,
       doc.get("name").get.asString().getValue,
-      doc.get("price").get.asDouble().getValue,
+      price,
       ingredients
     )
   }

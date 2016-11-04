@@ -14,7 +14,7 @@ class BowlController @Inject()(bowlService: BowlService) extends Controller{
   def saveBowl = Action {
     //En verdad este método va a recibir los id de los ingredientes y el nombre desde la view.
     //Entonces se buscan los ingredientes en la bd y se crea el bowl.
-    val ingredientsList: List[Ingredient] = List(Ingredient(UUID.randomUUID().toString, "Salmon", 50.00),Ingredient(UUID.randomUUID().toString, "Arroz", 25.00))
+    val ingredientsList: List[Ingredient] = List(Ingredient(UUID.randomUUID().toString, "Salmon", 50),Ingredient(UUID.randomUUID().toString, "Arroz", 25.00))
     var bowlPrice: Double = 0.0
     for(ingredient <- ingredientsList){
       bowlPrice = bowlPrice + ingredient.price

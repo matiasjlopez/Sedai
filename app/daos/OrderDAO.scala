@@ -68,6 +68,9 @@ class MongoOrderDAO @Inject()(mongo: Mongo) extends OrderDAO {
       }
     }
 
+    var bsonPrice: BsonValue = doc.get("price").get
+    val price: Double = if(bsonPrice.toString contains "Double") bsonPrice.asDouble().getValue else bsonPrice.asInt32().doubleValue()
+
     Order(
       doc.get("_id").get.asString().getValue,
       doc.get("contact").get.asInstanceOf[Contact],
@@ -75,7 +78,7 @@ class MongoOrderDAO @Inject()(mongo: Mongo) extends OrderDAO {
       doc.get("status").get.asString().getValue,
       doc.get("date").get.asString().getValue,
       doc.get("address").get.asInstanceOf[Address],
-      doc.get("price").get.asDouble().getValue
+      price
     )
   }
 

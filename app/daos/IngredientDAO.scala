@@ -2,6 +2,7 @@ package daos
 
 import com.google.inject.{ImplementedBy, Inject, Singleton}
 import models._
+import org.bson.BsonValue
 import org.mongodb.scala._
 import org.mongodb.scala.model.Filters._
 import org.mongodb.scala.result.UpdateResult
@@ -57,10 +58,13 @@ class MongoIngredientDAO @Inject()(mongo: Mongo) extends IngredientDAO {
 
   private def documentToIngredient(doc: Document): Ingredient = {
 
+    var bsonPrice: BsonValue = doc.get("price").get
+    val price: Double = if(bsonPrice.toString contains "Double") bsonPrice.asDouble().getValue else bsonPrice.asInt32().doubleValue()
+
     Ingredient(
       doc.get("_id").get.asString().getValue,
       doc.get("name").get.asString().getValue,
-      doc.get("price").get.asDouble().getValue
+      price
     )
   }
 }

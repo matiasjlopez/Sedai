@@ -31,7 +31,7 @@ class OrderController @Inject()(orderService: OrderService, bowlService: BowlSer
     val newBowl: Bowl = Bowl(UUID.randomUUID().toString, "KanikamaBowl", bowlPrice, ingredientsList)
 
     //Fetching Bowl from DB after running BowlController.save()
-    val bowlFromDB: Future[Bowl] = bowlService.find("30b8a026-9bc2-40f4-a83f-a3a26f928d01")
+    val bowlFromDB: Future[Bowl] = bowlService.find("99854883-345a-4fe6-98a6-c36eb5d5a85b")
     val fetchedBowl = Await.result(bowlFromDB,Duration.Inf)
 
     //List of ordered bowls
